@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="row">
+    <div class="span8 offset2">
+        <h1>Airport Distance</h1>
+        <form action="get_distance.html" method="POST">
+            <fieldset>
+            <legend>Enter two airports to calculate the distance between them</legend>
+            <label for="origin">Origin</label>
+            <input type="text" name="origin" placeholder="name or airport code" class="input-xlarge">
+            <label for="destination">Destination</label>
+            <input type="text" name="destination" placeholder="name or airport code" class="input-xlarge">
+            </fieldset>
+            <button type="submit" class="btn">Calculate!</button>
+        </form>
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert">
+                {{ message }}
+                </div>
+            {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        {% endwith %}
+
+    </div>
+</div>
+{% endblock %}
+{% block js %}
+<script src="{{ url_for("static", filename="main.js") }}"></script>
+{% endblock %}
